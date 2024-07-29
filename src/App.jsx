@@ -53,11 +53,13 @@ export default function App() {
         {
             listaPedidos.map((produto) =>
             <table key = {produto.id}>
+            <tr>
                 <td>{produto.item}</td>
-                <td>{produto.preço}</td>
+                <td>{produto.preco}</td>
                 <td>
                 <button onClick={() =>RemoverPedido(produto)}> Remover</button>
                 </td>
+                </tr>
 
 
             </table>
