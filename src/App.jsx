@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../src/globals.css";
 
 
@@ -28,10 +29,44 @@ export default function App() {
             preco: "R$ 8,99"
         },
     ]);
+    const [listaPedidos, setPedidos] = useState ([]);
+    const adicionarProdutoPedido = (produto) =>{
+        setPedidos([...listaPedidos,produto]);
+    }
+    console.table(listaPedidos);
 
     return (
-       <div>
+       <div className = "bloco-principal">
+        {
+            listaProdutos.map((produto) =>
 
+                <div key = {produto.id}>
+                <img src = {produto.imagem}/>
+                <p>{produto.item}</p>
+                <button onClick={() =>adicionarProdutoPedido(produto)}> Quero!</button>
+                </div>
+
+            )
+        }
+    <div className = "bloco-pedidos">
+        <p>Meus Pedidos</p>
+        {
+            listaPedidos.map((produto) =>
+            <table key = {produto.id}>
+                <td>{produto.item}</td>
+                <td>{produto.preço}</td>
+                <td>
+                <button onClick={() =>RemoverPedido(produto)}> Remover</button>
+                </td>
+
+
+            </table>
+                
+            )
+        }
+
+
+    </div>
        </div>
     );
 }
