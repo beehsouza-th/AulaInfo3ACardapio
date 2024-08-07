@@ -33,6 +33,28 @@ export default function App() {
     const adicionarProdutoPedido = (produto) =>{
         setPedidos([...listaPedidos,produto]);
     }
+    const RemoverItem = (id) =>{
+      let listaAdicionar = listaPedidos.filter(
+        (pedido) =>{
+            if(pedido !== id){
+
+                return pedido
+            }else {
+                return null; // ==0
+            }
+
+        }
+            
+      );
+        setPedidos(listaAdicionar);
+    }
+
+    
+
+
+
+
+
     console.table(listaPedidos);
 
     return (
@@ -57,7 +79,7 @@ export default function App() {
                 <td>{produto.item}</td>
                 <td>{produto.preco}</td>
                 <td>
-                <button onClick={() =>RemoverPedido(produto)}> Remover</button>
+                <button onClick={() =>RemoverItem(produto.id)}>x</button>
                 </td>
                 </tr>
 
