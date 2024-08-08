@@ -33,28 +33,23 @@ export default function App() {
     const adicionarProdutoPedido = (produto) =>{
         setPedidos([...listaPedidos,produto]);
     }
-    const RemoverItem = (id) =>{
-      let listaAdicionar = listaPedidos.filter(
-        (pedido) =>{
-            if(pedido !== id){
 
-                return pedido
+    const RemoverItem = (id) =>{
+      let listaremove= listaPedidos.filter(
+        (pedidos, index) =>{
+            if(index !== id){
+                return pedidos
             }else {
-                return null; // ==0
+                return null;
             }
 
         }
             
       );
-        setPedidos(listaAdicionar);
+        setPedidos(listaremove);
     }
 
     
-
-
-
-
-
     console.table(listaPedidos);
 
     return (
@@ -73,13 +68,13 @@ export default function App() {
     <div className = "bloco-pedidos">
         <p>Meus Pedidos</p>
         {
-            listaPedidos.map((produto) =>
+            listaPedidos.map((produto, index) =>
             <table key = {produto.id}>
             <tr>
                 <td>{produto.item}</td>
                 <td>{produto.preco}</td>
                 <td>
-                <button onClick={() =>RemoverItem(produto.id)}>x</button>
+                <button onClick={() =>RemoverItem(index)}>x</button>
                 </td>
                 </tr>
 
